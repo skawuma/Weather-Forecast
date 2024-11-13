@@ -1,0 +1,103 @@
+<mat-toolbar class="mat-elevation-z8" [color]="themeService.getTheme()">
+    Weather Forecast
+</mat-toolbar>
+
+<div class="content-wrapper">
+    <br>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="row wrap" fxLayoutAlign="center center">
+            <mat-form-field appearance="outline" [color]="themeService.getTheme()">
+                <mat-label>Latitude</mat-label>
+                <input type="number" matInput [(ngModel)]="latitude">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" [color]="themeService.getTheme()">
+            <mat-label>Longitude</mat-label>
+            <input type="number" matInput [(ngModel)]="longitude">
+        </mat-form-field>
+
+        <div fxLayout="row wrap">
+            <button mat-mini-fab [color]="themeService.getTheme()" (click)="handleClick()"
+                [disabled]="!latitude || !longitude">
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- <h1 *ngIf="filteredItems()?.length === 0">Nothing to show!</h1> -->
+</div>
+
+<div class="card-container">
+    <!-- <div class="responsive_table"> -->
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <img [src]="element.icon" alt="Weather Icon" width="50"
+                        height="50" /> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="startTime">
+                <th mat-header-cell *matHeaderCellDef> Start Time </th>
+                <td mat-cell *matCellDef="let element"> {{element.startTime | date:'MMM dd, yyyy, hh:mm a'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="endTime">
+                <th mat-header-cell *matHeaderCellDef> End Time </th>
+                <td mat-cell *matCellDef="let element"> {{element.endTime | date:'MMM dd, yyyy, hh:mm a'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="isDaytime">
+                <th mat-header-cell *matHeaderCellDef> Day Time </th>
+                <td mat-cell *matCellDef="let element"> {{element.isDaytime}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="temperature">
+                <th mat-header-cell *matHeaderCellDef> Temperature </th>
+                <td mat-cell *matCellDef="let element"> {{element.temperature}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="temperatureUnit">
+                <th mat-header-cell *matHeaderCellDef> Temperature Unit </th>
+                <td mat-cell *matCellDef="let element"> {{element.temperatureUnit}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="windSpeed">
+                <th mat-header-cell *matHeaderCellDef> Wind Speed </th>
+                <td mat-cell *matCellDef="let element"> {{element.windSpeed}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="windDirection">
+                <th mat-header-cell *matHeaderCellDef> Wind Direction </th>
+                <td mat-cell *matCellDef="let element"> {{element.windDirection}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="shortForecast">
+                <th mat-header-cell *matHeaderCellDef> Short Forecast </th>
+                <td mat-cell *matCellDef="let element"> {{element.shortForecast}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="detailedForecast">
+                <th mat-header-cell *matHeaderCellDef> Detailed Forecast </th>
+                <td mat-cell *matCellDef="let element"> {{element.detailedForecast}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    <!-- </div> -->
+</div>
+
+<!-- <mat-toolbar [color]="themeService.getTheme()" class="footer">
+    <div class="toolbar-content">All rights reserved @ BTech Days - 2023</div>
+</mat-toolbar> -->

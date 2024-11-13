@@ -1,0 +1,57 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .fill-remaining-space {
+    flex: 1;
+  }
+
+  // .content-wrapper {
+  //   position: absolute;
+  //   top: 64px; /* Adjust this based on your header's height */
+  //   bottom: 56px; /* Adjust this based on your footer's height */
+  //   left: 0;
+  //   right: 0;
+  //   overflow: auto;
+  // }
+
+  .toolbar-content {
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    width: 100%; /* Ensure content spans full width */
+  }
+
+  mat-card{
+      cursor: pointer;
+  }
+
+  mat-form-field{
+    padding: 10px 10px 0px 10px;
+    
+  }
+
+  h1{
+    padding: 5px;
+    text-align: center;
+  }
+
+  .card-container {
+    margin-top: 20px;
+    max-height: 400px; /* Set desired height */
+    overflow-y: auto;
+  }
+  
+  // .card {
+  //   flex-basis: calc(50% - 20px); /* Adjust the width and margin as needed */
+  //   margin: 10px;
+  //   box-sizing: border-box;
+  // }
+  
+  
