@@ -4,7 +4,7 @@ import { SnachbarService } from '../services/snachbar.service';
 import { ThemeService } from '../services/theme.service';
 import { WeatherForecastService } from '../services/weather-forecast.service';
 import { GlobalConstants } from '../shared/global-constants';
-
+import { from } from 'rxjs'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -27,6 +27,7 @@ export class HomeComponent {
   changeTheme(color: any) {
     this.themeService.setTheme(color);
   }
+  
 
 
   handleClick() {
@@ -47,4 +48,30 @@ export class HomeComponent {
       this.snachbarService.openSnackBar(this.responseMessage);
     })
   }
+  handleClick1() {
+    this.ngxService.start();
+    
+    this.weatherForecastService.getWeatherForecast1().subscribe((response: any) => {
+      console.log (response);
+      this.periods = response?.properties?.periods;
+      console.log(this.periods);
+      this.dataSource = this.periods;
+      this.ngxService.stop();
+    }, (error: any) => {
+      this.ngxService.stop();
+      console.log(error?.error);
+      if (error?.error  && typeof error.error === 'string') {
+        this.responseMessage = error?.error;
+      }
+      else
+        this.responseMessage = GlobalConstants.genericError;
+      this.snachbarService.openSnackBar(this.responseMessage);
+    })
+  }
+
+
+
+  
+  
+ 
 }

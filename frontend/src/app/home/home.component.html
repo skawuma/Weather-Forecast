@@ -21,8 +21,15 @@
             <button mat-mini-fab [color]="themeService.getTheme()" (click)="handleClick()"
                 [disabled]="!latitude || !longitude">
                 <mat-icon>search</mat-icon>
+                
             </button>
+         
         </div>
+        <div fxLayout="row wrap">
+            <button mat-flat-button [color]="themeService.getTheme()" (click)="handleClick1()">
+            Get Current Location ForeCast
+            </button>
+           </div>
     </div>
 
 
